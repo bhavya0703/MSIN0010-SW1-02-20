@@ -50,13 +50,7 @@ n <- names(total1)
 f <- as.formula(paste("UNITS ~ PRICE + FEATURE + DISPLAY ", paste(n[!n %in% "UNITS"], collapse = " + ")))
 nn <- neuralnet(f,data=total1,hidden=c(5,3),linear.output=T)
 plot(nn)
-#Plotting the neural net 2.0
-library(neuralnet)
-n <- names(total1)
-xnam <- paste0("PRICE + FEATURE + DISPLAY", 1:29)
-(f <- as.formula(paste("UNITS ~ ", paste(xnam, collapse= "+"))))
-nn <- neuralnet(f,data=total1,hidden=c(5,3),linear.output=T)
-plot(nn)
+
 
 #NEURAL NETWORK APPROACH 2
 library(fastDummies)
