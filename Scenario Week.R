@@ -44,10 +44,17 @@ maxs <- apply(total1[,2:29], 2, max)
 mins <- apply(total1[,2:29], 2, min)
 # Use scale() and convert the resulting matrix to a data frame
 scaled.data <- as.data.frame(scale(total1, center = mins, scale = maxs - mins))
-#Plotting the neural net
+#Plotting the neural net 1.0
 library(neuralnet)
 n <- names(total1)
 f <- as.formula(paste("UNITS ~ PRICE + FEATURE + DISPLAY ", paste(n[!n %in% "UNITS"], collapse = " + ")))
+nn <- neuralnet(f,data=total1,hidden=c(5,3),linear.output=T)
+plot(nn)
+#Plotting the neural net 2.0
+library(neuralnet)
+n <- names(total1)
+xnam <- paste0("PRICE + FEATURE + DISPLAY", 1:29)
+(f <- as.formula(paste("UNITS ~ ", paste(xnam, collapse= "+"))))
 nn <- neuralnet(f,data=total1,hidden=c(5,3),linear.output=T)
 plot(nn)
 
