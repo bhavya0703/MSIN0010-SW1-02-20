@@ -69,7 +69,7 @@ train = clean_names(total1, case="screaming_snake")
 catvars = vars_select(names(total1), starts_with("CATEGORY_"))
 catvars = paste(catvars, collapse=" + ")
 # create formula
-form = paste ("UNITS ~ PRICE + FEATURE + DISPLAY" ,catvars)
+form = paste ("UNITS ~ PRICE + FEATURE + DISPLAY +" ,catvars)
 # run NN
 nn <- neuralnet(as.formula(form), data=total1)
 plot(nn)
